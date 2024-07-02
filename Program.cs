@@ -1,3 +1,5 @@
+using DotEnv.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// ENV Config
+{
+    new EnvLoader()
+        .AddEnvFile("config.env")
+        .Load();
+
+    var reader = new EnvReader();
+    string value = reader["API_URL"];
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
