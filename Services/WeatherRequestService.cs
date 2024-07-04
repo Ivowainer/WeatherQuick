@@ -1,21 +1,24 @@
 ﻿using System.Text.Json;
 using DotEnv.Core;
+using WeatherQuick.DataAccess;
 
 namespace WeatherQuick.Services;
 
 public class WeatherRequestService
 {
-    /*public readonly string location;
-    public WeatherRequestService(string _location)
+    private readonly IEnvReader reader;
+    public WeatherRequestService(IEnvReader reader)
     {
-        _location = location;
-    }*/
+        this.reader = reader;
+    }
     
     public async Task<WeatherModel> GetWeatherModelCity(string location)
     {
+        WeatherDataAccess weatherDataAccess = new WeatherDataAccess("localhost");
+        weatherDataAccess.GetNameTest();
+        
         var cl = new HttpClient();
-            
-        var reader = new EnvReader();
+        
         string key = reader.GetStringValue("API_KEY");
     
         string baseUrl = $"http://api.weatherapi.com/v1/current.json?key={key}&q={location}&aqi=no";

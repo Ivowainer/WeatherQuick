@@ -8,14 +8,19 @@ namespace WeatherQuick.Controllers;
 [Route("api/[controller]")]
 public class WeatherController : Controller
 {
+    private readonly WeatherRequestService _weatherRequestService;
+
+    public WeatherController(WeatherRequestService weatherRequestService)
+    {
+        _weatherRequestService = weatherRequestService;
+    }
+    
     [HttpGet("{location}")]
     public async Task<IActionResult> GetWeather(string location)
     {
         try
         {
-            WeatherRequestService weatherRequestService = new WeatherRequestService();
-
-            WeatherModel weather = await weatherRequestService.GetWeatherModelCity(location);
+            WeatherModel weather = await _weatherRequestService.GetWeatherModelCity(location);
             
             return Ok(weather);
 

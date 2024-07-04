@@ -1,8 +1,11 @@
 using DotEnv.Core;
+using WeatherQuick.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<IEnvReader, EnvReader>();
+builder.Services.AddTransient<WeatherRequestService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
