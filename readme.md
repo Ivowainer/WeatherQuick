@@ -1,6 +1,9 @@
 ﻿# WeatherQuick
 
-WeatherQuick is a C# project that uses .NET Core to provide an API that returns weather information for a specific location. The weather information is obtained from an external API and is stored in a Redis database for faster access on future requests.
+WeatherQuick is a C# project that uses .NET Core to provide an API that returns weather information for a specific location. The weather information is obtained from an external API and is stored in a Redis database for faster access on future requests. 
+
+[IDEA]("https://roadmap.sh/backend/project-ideas")
+![img.png](https://assets.roadmap.sh/guest/weather-api-f8i1q.png)
 
 ## Project Structure
 
