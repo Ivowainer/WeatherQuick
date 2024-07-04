@@ -20,12 +20,11 @@ public class WeatherController : Controller
     {
         try
         {
-            WeatherModel weather = await _weatherRequestService.GetWeatherModelCity(location);
+            WeatherModel weather = await _weatherRequestService.GetWeatherCity(location);
             
             return Ok(weather);
 
         } catch(Exception exception) {
-            Console.WriteLine("Exception Hit------------");
             Console.WriteLine(exception);
 
             return StatusCode(500, "Internal server error");
